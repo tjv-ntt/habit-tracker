@@ -10,6 +10,8 @@ plugins {
     id("org.jetbrains.kotlinx.kover") version "0.9.1"
 }
 
+
+
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -63,13 +65,20 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
     implementation(libs.androidx.ui.test.junit4.android)
-    testImplementation(libs.junit.junit)
-    testImplementation(libs.junit.jupiter)
     debugImplementation(compose.uiTooling)
-    // Test rules and transitive dependencies:
-    androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.14")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.7.8")
+    implementation("androidx.compose.ui:ui-test-manifest:1.3.0-beta01")
 }
+
+
