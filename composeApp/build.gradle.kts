@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    id("org.jetbrains.kotlinx.kover") version "0.9.1"
 }
 
 kotlin {
@@ -65,6 +66,10 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.ui.test.junit4.android)
+    testImplementation(libs.junit.junit)
+    testImplementation(libs.junit.jupiter)
     debugImplementation(compose.uiTooling)
+    // Test rules and transitive dependencies:
+    androidTestImplementation(libs.androidx.ui.test.junit4)
 }
-
