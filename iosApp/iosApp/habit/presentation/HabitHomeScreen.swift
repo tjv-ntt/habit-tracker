@@ -5,9 +5,3 @@ struct HabitHomeScreen: View {
             .padding()
     }
 }
-
-struct HabitHomeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        HabitHomeScreen()
-    }
-}
