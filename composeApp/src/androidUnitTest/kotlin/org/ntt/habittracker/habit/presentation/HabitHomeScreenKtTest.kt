@@ -15,10 +15,10 @@ class HabitHomeScreenKtTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun habitHomeScreen_displaysHelloWorld() {
+    fun habitHomeScreen_displaysHabitTrackerTitle() {
         composeTestRule.setContent {
             HabitHomeScreen()
         }
-        composeTestRule.onNodeWithText("Hello World!").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Habit Tracker").assertIsDisplayed()
     }
 }

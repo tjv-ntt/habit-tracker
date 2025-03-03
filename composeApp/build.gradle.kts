@@ -74,6 +74,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.ui.test.junit4.android)
+    implementation(libs.androidx.material3.android)
     debugImplementation(compose.uiTooling)
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.robolectric:robolectric:4.14")
