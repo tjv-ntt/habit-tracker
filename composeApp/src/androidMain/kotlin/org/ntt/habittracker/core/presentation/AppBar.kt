@@ -18,10 +18,7 @@ import androidx.compose.ui.text.style.TextOverflow
 fun AppBar() {
 	val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 		CenterAlignedTopAppBar(
-			colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-				containerColor = MaterialTheme.colorScheme.primaryContainer,
-				titleContentColor = MaterialTheme.colorScheme.primary,
-			),
+			colors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
 			title = {
 				androidx.compose.material3.Text(
 					"Habit Tracker",

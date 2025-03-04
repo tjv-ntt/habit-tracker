@@ -1,11 +1,3 @@
-//
-//  HabitHomeScreen.swift
-//  HabitTrackerUITests
-//
-//  Created by NTTDATA on 2/28/25.
-//  Copyright © 2025 orgName. All rights reserved.
-//
-
 import XCTest
 
 final class HabitHomeScreen: XCTestCase {
@@ -25,12 +17,12 @@ final class HabitHomeScreen: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testHelloWorld() throws {
+    func testAppBar() throws {
         // UI tests must launch the application that they test.
-        let expectedText = "Hello World!"
+        let expectedText = "Habit Tracker"
         
         // Or to verify text content:
-        XCTAssertEqual(app.staticTexts["Hello World!"].firstMatch.label, expectedText)
+        XCTAssertEqual(app.staticTexts["Habit Tracker"].firstMatch.label, expectedText)
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

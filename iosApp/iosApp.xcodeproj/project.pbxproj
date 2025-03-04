@@ -35,6 +35,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		84275BF32D6E24A600E4953A /* habit */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = habit; sourceTree = "<group>"; };
 		84275C032D72020600E4953A /* HabitTrackerUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HabitTrackerUITests; sourceTree = "<group>"; };
+		F262023C2D77491E0005B15B /* core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = core; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +94,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				F262023C2D77491E0005B15B /* core */,
 				84275BF32D6E24A600E4953A /* habit */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -128,6 +130,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				84275BF32D6E24A600E4953A /* habit */,
+				F262023C2D77491E0005B15B /* core */,
 			);
 			name = iosApp;
 			packageProductDependencies = (
