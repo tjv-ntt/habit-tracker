@@ -8,6 +8,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -20,10 +21,11 @@ fun AppBar() {
 		CenterAlignedTopAppBar(
 			colors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
 			title = {
-				androidx.compose.material3.Text(
+				Text(
 					"Habit Tracker",
 					maxLines = 1,
-					overflow = TextOverflow.Ellipsis
+					overflow = TextOverflow.Ellipsis,
+					style = MaterialTheme.typography.headlineMedium
 				)
 			},
 			//TODO: implement actions menu after MVP

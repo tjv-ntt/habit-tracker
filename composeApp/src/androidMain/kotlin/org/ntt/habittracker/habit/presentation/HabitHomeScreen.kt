@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import org.ntt.habittracker.core.presentation.AppBar
+import org.ntt.habittracker.habit.presentation.HabitCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -15,10 +16,7 @@ fun HabitHomeScreen() {
 	Scaffold(
 		modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
 		topBar = { AppBar() }
-	) { innerPadding ->
-		androidx.compose.material3.Text(
-			modifier = Modifier.padding(innerPadding),
-			text = "List Tiles Placeholder"
-		)
+	) {
+		HabitCard(modifier = Modifier.padding(it.calculateTopPadding()))
 	}
 }
