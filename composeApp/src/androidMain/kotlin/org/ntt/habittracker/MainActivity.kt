@@ -1,23 +1,29 @@
 package org.ntt.habittracker
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import org.ntt.habittracker.database.getHabitsDatabase
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val dao = getHabitsDatabase(applicationContext).getHabitsDao()
 
         setContent {
-            App()
+            App(habitsDao = dao)
         }
     }
 }
 
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
+class HabitTrackerApp : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        startKoin {
+            androidContext(this@HabitTrackerApp)
+            modules(appModule)
+        }
+    }
 }

@@ -15,5 +15,5 @@ interface HabitsDao {
     suspend fun delete(habit: Habit)
 
     @Query("SELECT * FROM habits")
-    fun getAllAsFlow(): Flow<List<Habit>>
+    fun getAll(): Flow<List<Habit>>
 }

@@ -15,9 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import org.ntt.habittracker.database.Habit
 
 @Composable
-fun HabitCard(modifier: Modifier) {
+fun HabitCard(modifier: Modifier, habit: Habit) {
     val checkedState = remember { mutableStateOf(false) }
     Card(
         modifier = modifier.fillMaxWidth()
@@ -30,7 +31,7 @@ fun HabitCard(modifier: Modifier) {
                 onCheckedChange = { checkedState.value = it }
             )
             Text(modifier = Modifier.semantics { contentDescription = "Habit Text" },
-                text = "Habit Text",
+                text = habit.name,
                 style = MaterialTheme.typography.titleLarge)
         }
     }

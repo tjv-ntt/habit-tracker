@@ -7,16 +7,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import org.ntt.habittracker.core.presentation.AppBar
+import org.ntt.habittracker.database.HabitsDao
 import org.ntt.habittracker.habit.presentation.HabitCardList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HabitHomeScreen() {
+fun HabitHomeScreen(habitsDao: HabitsDao) {
 	val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 	Scaffold(
 		modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
 		topBar = { AppBar() }
 	) {
-		HabitCardList(modifier = Modifier.padding(it.calculateTopPadding()))
+		HabitCardList(modifier = Modifier.padding(it.calculateTopPadding()), habitsDao = habitsDao)
 	}
 }
