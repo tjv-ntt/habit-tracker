@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import org.ntt.habittracker.database.Habit
+import org.ntt.habittracker.domain.model.Habit
 
 @Composable
 fun HabitCard(modifier: Modifier, habit: Habit) {
