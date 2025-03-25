@@ -1,16 +1,18 @@
-//copied from https://dev.to/kafran/swiftui-list-card-view-2da4
-
 import SwiftUI
 
 struct HabitCardList: View {
+    @ObservedObject var viewModel: HomeViewModel
 
     var body: some View {
-        List {
-            HabitCard().listRowSeparator(.hidden)
-            HabitCard().listRowSeparator(.hidden)
-            HabitCard().listRowSeparator(.hidden)
+        if viewModel.allHabits.isEmpty {
+            Text("There are no habits")
+                .accessibilityIdentifier("NoHabitsText")
+        } else {
+            List(viewModel.allHabits.map { HabitWrapper(habit: $0) }) { habitWrapper in
+                HabitCard(habit: habitWrapper).listRowSeparator(.hidden)
+            }
+            .listStyle(.plain)
+            .accessibilityIdentifier("HabitCardList")
         }
-        .listStyle(.plain)
-        .accessibilityIdentifier("HabitCardList")
-        }
+    }
 }

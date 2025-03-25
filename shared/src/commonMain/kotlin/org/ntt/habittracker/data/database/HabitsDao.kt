@@ -15,5 +15,5 @@ interface HabitsDao {
     suspend fun deleteHabit(habit: Habit)
 
     @Query("SELECT * FROM habits")
-    fun getAllHabits(): List<Habit>
+    suspend fun getAllHabits(): List<Habit>
 }

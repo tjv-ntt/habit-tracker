@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HabitCard: View {
     @State private var isOn = false
+    var habit: HabitWrapper
     
     var body: some View {
         ZStack(alignment: Alignment.leading) {
@@ -11,7 +12,7 @@ struct HabitCard: View {
                 .shadow(radius: 5)
             
             Toggle(isOn: $isOn) {
-                Text("Habit Text")
+                Text(habit.habit.name)
                     .accessibilityIdentifier("HabitCardText")
             }
             .toggleStyle(iOSCheckboxToggleStyle())

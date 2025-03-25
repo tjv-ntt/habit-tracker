@@ -18,7 +18,9 @@ class HabitCardListKtTest {
     @Test
     fun listIsDisplayed() {
         composeTestRule.setContent {
-            HabitCardList(modifier = Modifier)
+            HabitCardList(
+                viewModel = TODO()
+            )
         }
 
         text.assertIsDisplayed()

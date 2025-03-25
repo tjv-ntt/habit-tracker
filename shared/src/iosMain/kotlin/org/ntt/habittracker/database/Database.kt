@@ -1,13 +1,17 @@
 package org.ntt.habittracker.database
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import org.ntt.habittracker.data.database.HabitsDatabase
 import platform.Foundation.NSHomeDirectory
 
-fun getDatabaseBuilder(): RoomDatabase.Builder<HabitsDatabase> {
+fun getDatabaseBuilder(): HabitsDatabase {
     val dbFile = NSHomeDirectory() + "/habits.db"
     return Room.databaseBuilder<HabitsDatabase>(
         name = dbFile,
-    )
+    ).setDriver(BundledSQLiteDriver())
+        .setQueryCoroutineContext(Dispatchers.IO)
+        .build()
 }

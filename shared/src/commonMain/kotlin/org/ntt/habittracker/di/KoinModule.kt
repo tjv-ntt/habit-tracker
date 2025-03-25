@@ -22,6 +22,7 @@ fun initKoin(config: KoinAppDeclaration? = null) =
 	startKoin {
 		config?.invoke(this)
 		modules(
+			platformModule(),
 			provideDataSourceModule,
 			provideRepositoryModule,
 			provideUseCaseModule,

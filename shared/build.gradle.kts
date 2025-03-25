@@ -16,7 +16,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -27,7 +27,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies{
             implementation(libs.koin.android)
@@ -40,6 +40,10 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+        }
+        iosMain.dependencies {
+            api(libs.koin.core)
+            implementation(libs.sqlite.bundled)
         }
     }
 }
