@@ -5,14 +5,19 @@ import Shared
 
 class HomeViewModel: ObservableObject {
     @Published var allHabits: [Shared.Habit] = []
+    
     private let getAllHabitsUseCase: GetAllHabitsUseCase
-    let habitRepository: HabitRepository
-
-    init(getAllHabitsUseCase: GetAllHabitsUseCase, habitRepository: HabitRepository = HabitRepositoryHelper().getHabitRepository()) {
+    private let upsertHabitUseCase: UpsertHabitUseCase
+    // let habitRepository: HabitRepository
+    
+    init(getAllHabitsUseCase: GetAllHabitsUseCase, upsertHabitUseCase: UpsertHabitUseCase) {
+        //  habitRepository: HabitRepository = HabitRepositoryHelper().getHabitRepository()
+        
         self.getAllHabitsUseCase = getAllHabitsUseCase
-        self.habitRepository = habitRepository
+        self.upsertHabitUseCase = upsertHabitUseCase
+        //    self.habitRepository = habitRepository
     }
-
+    
     @MainActor
     func getAllHabits() async {
         do {
@@ -20,6 +25,17 @@ class HomeViewModel: ObservableObject {
             self.allHabits = habits
         } catch {
             print("Failed to fetch habits: \(error)")
+        }
+    }
+    
+    @MainActor
+    func upsertHabit(habit: Shared.Habit) async {
+        do {
+            //TODO: add if statement to check getAllHabits?
+            try await upsertHabitUseCase.execute(habit: habit)
+            await getAllHabits()
+        } catch {
+            print("Failed to upsert habit: \(error)")
         }
     }
 }
