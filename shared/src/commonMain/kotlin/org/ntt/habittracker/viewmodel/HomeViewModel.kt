@@ -8,9 +8,11 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.ntt.habittracker.domain.model.Habit
 import org.ntt.habittracker.domain.usecase.GetAllHabitsUseCase
+import org.ntt.habittracker.domain.usecase.UpsertHabitUseCase
 
 class HomeViewModel : ViewModel(), KoinComponent {
     private val getAllHabitsUseCase: GetAllHabitsUseCase by inject()
+    private val upsertHabitUseCase: UpsertHabitUseCase by inject()
 //    private val deleteNoteUseCase: DeleteNoteUseCase by inject()
 
     private val _allHabits = mutableStateOf(listOf<Habit>())
@@ -25,6 +27,15 @@ class HomeViewModel : ViewModel(), KoinComponent {
     fun getAllHabits() = viewModelScope.launch {
         try {
             _allHabits.value = getAllHabitsUseCase.execute()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    fun upsertHabit(habit: Habit) = viewModelScope.launch {
+        try {
+            upsertHabitUseCase.execute(habit)
+            getAllHabitsUseCase.execute()
         } catch (e: Exception) {
             e.printStackTrace()
         }
