@@ -19,7 +19,7 @@ struct AppBar: View {
                 }
         }
         VStack {
-            Spacer()
+      //      Spacer()
 
             HStack {
                 Spacer()
