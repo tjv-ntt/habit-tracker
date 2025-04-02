@@ -35,7 +35,7 @@ class HomeViewModel : ViewModel(), KoinComponent {
     fun upsertHabit(habit: Habit) = viewModelScope.launch {
         try {
             upsertHabitUseCase.execute(habit)
-            getAllHabitsUseCase.execute()
+            _allHabits.value = getAllHabitsUseCase.execute()
         } catch (e: Exception) {
             e.printStackTrace()
         }
