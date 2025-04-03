@@ -8,13 +8,15 @@ class HomeViewModel: ObservableObject {
     
     private let getAllHabitsUseCase: GetAllHabitsUseCase
     private let upsertHabitUseCase: UpsertHabitUseCase
+    private let deleteHabitUseCase: DeleteHabitUseCase
     // let habitRepository: HabitRepository
     
-    init(getAllHabitsUseCase: GetAllHabitsUseCase, upsertHabitUseCase: UpsertHabitUseCase) {
+    init(getAllHabitsUseCase: GetAllHabitsUseCase, upsertHabitUseCase: UpsertHabitUseCase, deleteHabitUseCase: DeleteHabitUseCase) {
         //  habitRepository: HabitRepository = HabitRepositoryHelper().getHabitRepository()
         
         self.getAllHabitsUseCase = getAllHabitsUseCase
         self.upsertHabitUseCase = upsertHabitUseCase
+        self.deleteHabitUseCase = deleteHabitUseCase
         //    self.habitRepository = habitRepository
     }
     
@@ -37,5 +39,19 @@ class HomeViewModel: ObservableObject {
         } catch {
             print("Failed to upsert habit: \(error)")
         }
+    }
+    
+    
+    @MainActor
+    func deleteHabit(habit: Shared.Habit) async {
+        do {
+            // Call the deleteHabitUseCase to delete the habit
+            try await deleteHabitUseCase.execute(habit: habit)
+            // Refresh the list of habits after deletion
+            await getAllHabits()
+        } catch {
+            print("Failed to delete habit: \(error)")
+        }
+        
     }
 }

@@ -26,10 +26,8 @@ struct AppBar: View {
                 Button(action: {
                     isPresentingModal = true
                 }) {
-                    Text("Add Habit")
-                        .frame(width: 100)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
+                    Image(systemName: "plus.circle.fill")
+                        .font(.system(size: 40)).foregroundColor(.gray)
                 }
                 .sheet(isPresented: $isPresentingModal) {
                     AddHabitView(isPresented: $isPresentingModal) { newHabit in

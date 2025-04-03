@@ -12,13 +12,13 @@ struct HabitCardList: View {
                 List(viewModel.allHabits.map { HabitWrapper(habit: $0) }) {
                     habitWrapper in
                     HabitCard(
-                        habit: habitWrapper
-//                        onDelete: {
-//                            Task {
-//                                await viewModel.deleteHabit(
-//                                    habit: habitWrapper.habit)
-//                            }
-//                        }
+                        habit: habitWrapper,
+                        onDelete: {
+                            Task {
+                                await viewModel.deleteHabit(
+                                    habit: habitWrapper.habit)
+                            }
+                        }
                     )
                     .listRowSeparator(.hidden)
                 }

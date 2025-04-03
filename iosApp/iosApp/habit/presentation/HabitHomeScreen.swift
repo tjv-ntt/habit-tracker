@@ -7,10 +7,12 @@ struct HabitHomeScreen: View {
     init() {
         let getAllHabitsUseCase = GetAllHabitsUseCase()
         let upsertHabitUseCase = UpsertHabitUseCase()
+        let deleteHabitUseCase = DeleteHabitUseCase()
         _viewModel = StateObject(
             wrappedValue: HomeViewModel(
                 getAllHabitsUseCase: getAllHabitsUseCase,
-                upsertHabitUseCase: upsertHabitUseCase))
+                upsertHabitUseCase: upsertHabitUseCase,
+                deleteHabitUseCase: deleteHabitUseCase))
     }
 
     var body: some View {
