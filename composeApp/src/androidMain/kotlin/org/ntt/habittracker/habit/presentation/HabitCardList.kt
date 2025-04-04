@@ -16,20 +16,6 @@ import org.ntt.habittracker.viewmodel.HomeViewModel
 
 @Composable
 fun HabitCardList(viewModel: HomeViewModel) {
-//	val habits by habitsDao.getAll().collectAsState(initial = emptyList())
-//	val scope = rememberCoroutineScope()
-
-//	LaunchedEffect(true) {
-//		val habitsList = listOf(
-//			Habit(1, "Running", false),
-//			Habit(2, "Reading", false),
-//			Habit(3, "Meditation", false)
-//		)
-//		habitsList.forEach {
-//			habitsDao.upsert(it)
-//		}
-//	}
-
 	val habits = viewModel.allHabits.value
 
 	if (habits.isEmpty().not()) {
@@ -44,13 +30,14 @@ fun HabitCardList(viewModel: HomeViewModel) {
 			items(habits) { habit ->
 				HabitCard(
 					modifier = Modifier.padding(vertical = 8.dp),
-					habit = habit
+					habit = habit,
+					deleteHabit = { viewModel.deleteHabit(it) }
 				)
 			}
 		}
 	} else {
 		Box(modifier = Modifier.padding(bottom = 64.dp)) {
-			Text("NO LIST :O")
+			Text("There are no habits")
 		}
 	}
 }

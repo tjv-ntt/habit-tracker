@@ -7,22 +7,17 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.ntt.habittracker.domain.model.Habit
+import org.ntt.habittracker.domain.usecase.DeleteHabitUseCase
 import org.ntt.habittracker.domain.usecase.GetAllHabitsUseCase
 import org.ntt.habittracker.domain.usecase.UpsertHabitUseCase
 
 class HomeViewModel : ViewModel(), KoinComponent {
     private val getAllHabitsUseCase: GetAllHabitsUseCase by inject()
     private val upsertHabitUseCase: UpsertHabitUseCase by inject()
-//    private val deleteNoteUseCase: DeleteNoteUseCase by inject()
+    private val deleteHabitUseCase: DeleteHabitUseCase by inject()
 
     private val _allHabits = mutableStateOf(listOf<Habit>())
     val allHabits = _allHabits
-
-//    private val _showDialog = mutableStateOf(false)
-//    val showDialog = _showDialog
-
-//    private val _noteId = mutableStateOf(0L)
-//    val noteId = _noteId
 
     fun getAllHabits() = viewModelScope.launch {
         try {
@@ -41,24 +36,12 @@ class HomeViewModel : ViewModel(), KoinComponent {
         }
     }
 
-//    fun deleteNotes(noteId: Long) = viewModelScope.launch {
-//        _showDialog.value = false
-//        try {
-//            deleteNoteUseCase.execute(noteId)
-//            _noteId.value = 0
-//            _allNotes.value = getAllNotesUseCase.execute()
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
-//    }
-
-//    fun showAlertDialog(noteId: Long) {
-//        _noteId.value = noteId
-//        _showDialog.value = true
-//    }
-//
-//    fun dismissAlertDialog() {
-//        _noteId.value = 0
-//        _showDialog.value = false
-//    }
+    fun deleteHabit(habit: Habit) = viewModelScope.launch {
+        try {
+            deleteHabitUseCase.execute(habit)
+            _allHabits.value = getAllHabitsUseCase.execute()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }
