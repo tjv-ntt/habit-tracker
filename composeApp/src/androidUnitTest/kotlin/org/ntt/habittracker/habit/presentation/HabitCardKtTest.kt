@@ -23,7 +23,10 @@ class HabitCardKtTest {
     @Test
     fun checkboxInitiallyUnchecked() {
         composeTestRule.setContent {
-            HabitCard(modifier = Modifier)
+            HabitCard(
+                modifier = TODO(),
+                habit = TODO()
+            )
         }
 
         checkbox.assertIsDisplayed()
@@ -33,7 +36,10 @@ class HabitCardKtTest {
     @Test
     fun toggleCheckbox() {
         composeTestRule.setContent {
-            HabitCard(modifier = Modifier)
+            HabitCard(
+                modifier = TODO(),
+                habit = TODO()
+            )
         }
 
         checkbox.performClick()
@@ -43,7 +49,10 @@ class HabitCardKtTest {
     @Test
     fun textIsDisplayed() {
         composeTestRule.setContent {
-            HabitCard(modifier = Modifier)
+            HabitCard(
+                modifier = TODO(),
+                habit = TODO()
+            )
         }
 
         text.assertIsDisplayed()

@@ -76,5 +76,8 @@ gen/
 .gradle/
 build/
 
+# Kotlin specific
+.kotlin/
+
 # Local configuration file
 local.properties

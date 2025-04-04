@@ -1,4 +1,4 @@
-package org.ntt.habittracker.database
+package org.ntt.habittracker.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
