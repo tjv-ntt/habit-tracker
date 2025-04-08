@@ -45,6 +45,9 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.sqlite.bundled)
         }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+        }
     }
 }
 
