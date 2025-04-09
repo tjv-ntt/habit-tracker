@@ -7,6 +7,7 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.bind
 import org.koin.dsl.module
+import org.ntt.habittracker.data.database.HabitsDatabase
 import org.ntt.habittracker.data.datasource.HabitLocalDataSource
 import org.ntt.habittracker.data.datasource.HabitLocalDataSourceImpl
 import org.ntt.habittracker.data.repository.HabitRepository
@@ -31,6 +32,7 @@ fun initKoin(config: KoinAppDeclaration? = null) =
 	}
 
 val provideDataSourceModule = module {
+	single { get<HabitsDatabase>().getDao() }
 	singleOf(::HabitLocalDataSourceImpl).bind(HabitLocalDataSource::class)
 }
 
