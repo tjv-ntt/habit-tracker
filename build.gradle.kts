@@ -7,3 +7,6 @@ plugins {
     alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
 }
+
+// Remove kotlin multiplatform and iOS targets configuration
+// ...existing code...
